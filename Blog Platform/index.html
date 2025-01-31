@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Blog Creator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container {
+            width: 80%;
+            max-width: 800px;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: center;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .post {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        textarea {
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button onclick="addPost()">+ Add Post</button>
+        <div id="posts"></div>
+    </div>
+
+    <script>
+        function addPost() {
+            const postContainer = document.getElementById("posts");
+            
+            const postDiv = document.createElement("div");
+            postDiv.classList.add("post");
+            
+            const title = document.createElement("input");
+            title.type = "text";
+            title.placeholder = "Enter title";
+            
+            const content = document.createElement("textarea");
+            content.placeholder = "Enter your content here...";
+            
+            const saveButton = document.createElement("button");
+            saveButton.innerText = "Save";
+            saveButton.onclick = () => {
+                title.disabled = true;
+                content.disabled = true;
+            };
+            
+            postDiv.appendChild(title);
+            postDiv.appendChild(content);
+            postDiv.appendChild(saveButton);
+            postContainer.appendChild(postDiv);
+        }
+    </script>
+</body>
+</html>
